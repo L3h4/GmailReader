@@ -41,9 +41,6 @@
       <HintPath>..\packages\S22.Imap.3.6.0.0\lib\net40\S22.Imap.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
-    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
@@ -54,7 +51,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="DeliveryMessage.cs" />
+    <Compile Include="Manager.cs" />
     <Compile Include="DeliveryData.cs" />
     <Compile Include="DeliveryDataParser.cs" />
     <Compile Include="MessageFinder.cs" />

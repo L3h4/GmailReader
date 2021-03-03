@@ -31,9 +31,7 @@ namespace MailLib
             using (ImapClient client = new ImapClient("imap.gmail.com", 993, Username, Password, AuthMethod.Login, true))
             {
                 IEnumerable<uint> uids = client.Search(condition);
-
                 messages = client.GetMessages(uids);
-
             }
             return messages;
         }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net.Mail;
 
 namespace MailLib
 {
@@ -13,8 +14,12 @@ namespace MailLib
         {
             Text = text;
         }
+        public DeliveryDataParser(MailMessage msg)
+        {
+            Text = msg.Body;
+        }
 
-        public void CutUselessText()
+        private void CutUselessText()
         {
             string firstKeyword = "Pick-up at";
             string secondKeyword = "If you are interested in this load";
@@ -22,18 +27,19 @@ namespace MailLib
             Text = Text.Substring(0, Text.IndexOf(secondKeyword));
             Text = Text.Trim();            
 
-            //Console.WriteLine(Text);
         }
 
-        public Dictionary<string, string> Parse()
+        public DeliveryData Parse()
         {
+            CutUselessText();
             string[] rawStrings = Text.Split("\n\r".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
             Dictionary<string, string> keyValues = new Dictionary<string, string>();
             foreach(var rs in rawStrings)
                 keyValues.Add(rs.Split(":".ToCharArray(), 2).First().Trim(), rs.Split(":".ToCharArray(), 2).Last().Trim());
 
+            DeliveryData dd = new DeliveryData(keyValues);
             
-            return keyValues;
+            return dd;
         }
     }
 }
