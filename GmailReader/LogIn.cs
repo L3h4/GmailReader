@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace GmailReader
 {
-    public partial class MainMenu : Form
+    public partial class LogIn : Form
     {
-        public MainMenu()
+        public LogIn()
         {
             InitializeComponent();
         }
